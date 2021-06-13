@@ -1,7 +1,7 @@
 import requests, json
 
 
-apiKey = "kvnaYkiLWJBDi2pDvASX2A3wAq7Jhlk16offJxGw"
+apiKey = ""
 
 def getBrandName(food):
     return food["brandName"]
