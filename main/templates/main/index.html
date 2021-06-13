@@ -1,0 +1,58 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title>KCalCam | Calorie Tracker</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css"/>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons"/>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+    
+        <style>
+            body {
+                background-color: black;
+            }
+
+            .height {
+                margin: 0px;
+                padding:0px;
+                float: left;
+                width: 90%;
+                position:absolute;
+                top: 50%;
+                transform: translateY(-50%) translateX(-50%);
+                left:50%;
+            }
+
+            input[type="file"] {
+                display:none;
+            }
+        </style>
+    </head>
+
+    <body>
+        <div class="container">
+            <div class="row center height valign-wrapper">
+                <div class="col s12">
+                    <form action="." method="post", enctype="multipart/form-data">
+                        {% csrf_token %}
+                        <!-- {{form.as_table}} -->
+                        {%for field in form%}
+                            <input type="file" id="file" name="userImage" accept="image/*" required id="id_userImage" >
+                            <label for="file" class="waves-effect waves-light btn-large light-blue accent-4 hover">
+                                <i class="material-icons left">add_a_photo</i>
+                                Add Picture
+                            </label>
+                        {%endfor%}
+
+                        <button type="submit" class="waves-effect waves-light btn-large light-blue accent-4 hover"><i class="material-icons left">file_upload</i>Uplaod PPicture To Scan</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </body>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-beta/js/materialize.min.js"></script>
+</html>

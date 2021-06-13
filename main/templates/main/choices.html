@@ -1,0 +1,61 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title>KCalCam | Calorie Tracker</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css"/>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons"/>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+        <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+    
+        <style>
+            body {
+                background-color: black;
+                color:black;
+            }
+        </style>
+
+        <script>
+              $(document).ready(function(){
+                    $('.modal').modal();
+                });
+        </script>
+    </head>
+
+    <body>
+        <div class="container">
+            <div class="row center height valign-wrapper">
+                <div class="col s12">
+                    <img class="responsive-img" src="{{obj.userImage.url}}" alt="imagePog">
+                    <h3 style="color:white;">Select The Best Fit</h3>
+
+                    <div class="collection">
+                        {% for ids in food %}
+                        <a href="#{{ids}}" class="collection-item modal-trigger">{{ids}}</a>
+                        {% endfor %}
+                    </div>
+
+                    {% for id, info in food.items %}
+                        <div id="{{id}}" class="modal">
+                            <div class="modal-content">
+                                {% for i in info %}
+                                    <h6>{{i}}</h6>
+                                {% endfor %}
+                            </div>
+
+                            <div class="modal-footer">
+                                <a href="#!" class="modal-close waves-effect waves-green btn-flat">Close</a>
+                            </div>
+                        </div>
+                    {% endfor %}
+
+                </div>
+            </div>
+        </div>
+    </body>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-beta/js/materialize.min.js"></script>
+</html>
